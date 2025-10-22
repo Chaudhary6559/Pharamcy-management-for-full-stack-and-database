@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -72,7 +72,7 @@ namespace PHARMACY_1.Administrator_UC
             string username=userNameLabel.Text;
             string password=txtPassward.Text;
 
-            query="update users set userRole='"+txtUserRole+"',name='"+name+"',dob='"+dob+"',mobile='"+mobile+"',email='"+email+"',pass='"+password+"' where username='"+username+"'";
+            query = "update users set userRole='" + txtUserRole.Text + "',name='" + name + "',dob='" + dob + "',mobile='" + mobile + "',email='" + email + "',pass='" + password + "' where username='" + username + "'";
             fn.setData(query, "Profile Updation Successful,");
         }
     }

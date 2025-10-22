@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,8 +14,12 @@ namespace PHARMACY_1
     {
         protected SqlConnection getConnection()
         {
-            SqlConnection con = new SqlConnection();
-            con.ConnectionString = "data source = DESKTOP-LRSCS9D;database=DBMSPHARMA;integrated security=True";
+            string connectionString = ConfigurationManager.ConnectionStrings["PharmacyDb"]?.ConnectionString;
+            if (string.IsNullOrWhiteSpace(connectionString))
+            {
+                throw new InvalidOperationException("Missing connection string 'PharmacyDb' in App.config.");
+            }
+            SqlConnection con = new SqlConnection(connectionString);
             return con;    
         }
         public DataSet getdata(String query)
