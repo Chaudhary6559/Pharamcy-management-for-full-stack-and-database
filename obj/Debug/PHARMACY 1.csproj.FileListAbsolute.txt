@@ -1,0 +1,26 @@
+D:\PHARMACY\PHARMACY 1\bin\Debug\PHARMACY 1.exe.config
+D:\PHARMACY\PHARMACY 1\bin\Debug\PHARMACY 1.exe
+D:\PHARMACY\PHARMACY 1\bin\Debug\PHARMACY 1.pdb
+D:\PHARMACY\PHARMACY 1\obj\Debug\PHARMACY 1.csproj.AssemblyReference.cache
+D:\PHARMACY\PHARMACY 1\obj\Debug\PHARMACY_1.Administrator_UC.UCDASHBOARD.resources
+D:\PHARMACY\PHARMACY 1\obj\Debug\PHARMACY_1.Administrator.resources
+D:\PHARMACY\PHARMACY 1\obj\Debug\PHARMACY_1.Form1.resources
+D:\PHARMACY\PHARMACY 1\obj\Debug\PHARMACY_1.Properties.Resources.resources
+D:\PHARMACY\PHARMACY 1\obj\Debug\PHARMACY 1.csproj.GenerateResource.cache
+D:\PHARMACY\PHARMACY 1\obj\Debug\PHARMACY 1.csproj.CoreCompileInputs.cache
+D:\PHARMACY\PHARMACY 1\obj\Debug\PHARMACY 1.csproj.CopyComplete
+D:\PHARMACY\PHARMACY 1\obj\Debug\PHARMACY 1.exe
+D:\PHARMACY\PHARMACY 1\obj\Debug\PHARMACY 1.pdb
+D:\PHARMACY\PHARMACY 1\obj\Debug\PHARMACY_1.Administrator_UC.UCADDUSER.resources
+D:\PHARMACY\PHARMACY 1\obj\Debug\PHARMACY_1.Pharmacist.resources
+D:\PHARMACY\PHARMACY 1\obj\Debug\PHARMACY_1.Administrator_UC.UC_ViewUser.resources
+D:\PHARMACY\PHARMACY 1\bin\Debug\Guna.UI2.dll
+D:\PHARMACY\PHARMACY 1\obj\Debug\PHARMACY_1.Administrator_UC.UC_Profile.resources
+D:\PHARMACY\PHARMACY 1\obj\Debug\PHARMACY_1.PharmacistUC.UC_P_Dashboard.resources
+D:\PHARMACY\PHARMACY 1\obj\Debug\PHARMACY_1.PharmacistUC.UC_P_AddMedicine.resources
+D:\PHARMACY\PHARMACY 1\obj\Debug\PHARMACY_1.PharmacistUC.UC_P_ViewMedicine.resources
+D:\PHARMACY\PHARMACY 1\obj\Debug\PHARMACY_1.PharmacistUC.UC_P_UpdateMedicine.resources
+D:\PHARMACY\PHARMACY 1\obj\Debug\PHARMACY_1.PharmacistUC.UC_P_MediValidCheck.resources
+D:\PHARMACY\PHARMACY 1\obj\Debug\PHARMACY_1.PharmacistUC.UC_P_SellMedicine.resources
+D:\PHARMACY\PHARMACY 1\obj\Debug\PHARMACY_1.Forgot_Passward.resources
+D:\PHARMACY\PHARMACY 1\obj\Debug\PHARMACY_1.project_by.resources
