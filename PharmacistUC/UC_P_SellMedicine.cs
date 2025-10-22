@@ -1,4 +1,4 @@
-﻿using DGVPrinterHelper;
+using DGVPrinterHelper;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,7 +25,7 @@ namespace PHARMACY_1.PharmacistUC
         private void UC_P_SellMedicine_Load(object sender, EventArgs e)
         {
             listBoxMedicines.Items.Clear();
-            query = "select mname from medic where eDate >= getdate() and quantity > '0'";
+            query = "select mname from medic where eDate >= getdate() and quantity > 0";
             ds=fn.getdata(query);
 
             for(int i = 0; i < ds.Tables[0].Rows.Count;i++) 
@@ -42,7 +42,7 @@ namespace PHARMACY_1.PharmacistUC
         private void txtSearchBox_TextChanged(object sender, EventArgs e)
         {
             listBoxMedicines.Items.Clear();
-            query="select mname from medic where mname like'"+txtSearchBox.Text+"%' and eDate >= getdate() and quantity > '0";
+            query = "select mname from medic where mname like '" + txtSearchBox.Text + "%' and eDate >= getdate() and quantity > 0";
             ds = fn.getdata(query);
             for(int i = 0; i < ds.Tables[0].Rows.Count; i++)
             {
@@ -194,7 +194,8 @@ namespace PHARMACY_1.PharmacistUC
             print.PrintDataGridView(guna2DataGridView1);
             totalAmount = 0;
             totalLabel.Text = "RS.00";
-            guna2DataGridView1.DataSource = 0;
+            guna2DataGridView1.DataSource = null;
+            guna2DataGridView1.Rows.Clear();
 
 
         }
