@@ -1,353 +1,235 @@
-# 🔬 Hybrid Text Summarization System
+# 💊 Pharmacy Management System
 
-A state-of-the-art Python-based automatic text summarization system that combines **extractive** and **abstractive** methods using the latest machine learning and deep learning algorithms, including transformers. This system is designed for research purposes and provides comprehensive evaluation metrics.
+A comprehensive Windows Forms application built with C# for managing pharmacy operations, including medicine inventory, sales, user management, and more.
 
-## 🌟 Features
+## 📋 Overview
 
-### 🔍 Extractive Methods
-- **TextRank**: Graph-based sentence ranking algorithm
-- **BERT-based**: Semantic similarity using sentence transformers
-- **LexRank**: Centrality-based sentence selection
+This Pharmacy Management System is designed to streamline pharmacy operations with separate interfaces for Administrators and Pharmacists. The system provides complete medicine inventory management, user management, sales tracking, and medicine validity monitoring.
 
-### 🎯 Abstractive Methods
-- **T5**: Text-to-Text Transfer Transformer
-- **BART**: Bidirectional and Auto-Regressive Transformers
-- **Pegasus**: Pre-training with Extracted Gap-sentences
+## ✨ Features
 
-### 🔗 Hybrid Approaches
-- **Weighted Combination**: Combine extractive and abstractive results with configurable weights
-- **Pipeline**: Use extractive output as input to abstractive model
-- **Ensemble**: Multiple model combination strategies
+### 👨‍💼 Administrator Module
+- **Dashboard**: Overview of system statistics and operations
+- **User Management**: Add, view, and manage system users
+- **Profile Management**: View and update administrator profile
+- **Role-based Access Control**: Manage pharmacist and administrator accounts
 
-### 📊 Evaluation Metrics
-- **ROUGE-1, ROUGE-2, ROUGE-L**: N-gram overlap metrics
-- **BLEU**: Bilingual Evaluation Understudy
-- **BERTScore**: Semantic similarity using BERT embeddings
+### 👨‍⚕️ Pharmacist Module
+- **Dashboard**: Quick access to pharmacy statistics
+- **Medicine Management**:
+  - Add new medicines to inventory
+  - View all medicines in stock
+  - Update medicine information
+  - Check medicine validity/expiry dates
+- **Sales Operations**:
+  - Sell medicines
+  - Generate bills and receipts
+  - Print invoices using DGV Printer
 
-## 🚀 Quick Start
+## 🛠️ Technology Stack
 
-### Installation
+- **Language**: C# (.NET Framework 4.7.2)
+- **UI Framework**: Windows Forms with Guna.UI2
+- **Database**: SQL Server (DBMSPHARMA)
+- **IDE**: Visual Studio 2015+
 
-1. **Clone the repository:**
+## 📦 Prerequisites
+
+Before running this application, ensure you have:
+
+1. **Visual Studio 2015 or later** with .NET Framework 4.7.2
+2. **SQL Server** (2012 or later recommended)
+3. **Guna.UI2 Library** (included in `bin/Debug/Guna.UI2.dll`)
+
+## 🚀 Installation & Setup
+
+### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/hybrid-text-summarization.git
-cd hybrid-text-summarization
+git clone <repository-url>
+cd pharmacy-management-system
 ```
 
-2. **Install dependencies:**
-```bash
-pip install -r requirements.txt
-```
+### 2. Database Setup
+1. Open SQL Server Management Studio (SSMS)
+2. Execute the `database.sql` script to create the database and tables
+3. The script will create:
+   - `DBMSPHARMA` database
+   - `users` table for authentication and user management
+   - `medic` table for medicine inventory
+   - Default admin account (username: `root`, password: `root`)
 
-3. **Download additional models (optional):**
-```bash
-python -c "import nltk; nltk.download('punkt'); nltk.download('stopwords')"
-python -c "import spacy; spacy.cli.download('en_core_web_sm')"
-```
+### 3. Configure Database Connection
+Update the connection string in your application:
+- Default server: `localhost` (SQL Server)
+- Database: `DBMSPHARMA`
+- Authentication: Windows Authentication (modify in code if using SQL Server Authentication)
 
-### Basic Usage
+### 4. Build and Run
+1. Open `PHARMACY 1.sln` in Visual Studio
+2. Restore NuGet packages if needed
+3. Build the solution (F6)
+4. Run the application (F5)
 
-```python
-from src.hybrid import HybridSummarizer
-from src.utils.config_loader import ConfigLoader
-
-# Initialize summarizer
-config_loader = ConfigLoader()
-summarizer = HybridSummarizer(config_loader=config_loader)
-summarizer.load_models()
-
-# Generate summary
-text = "Your long text here..."
-result = summarizer.summarize(text, num_sentences=5, max_length=150)
-print(result['summary'])
-```
-
-### Web Interface
-
-Launch the Streamlit web interface:
-
-```bash
-streamlit run streamlit_app.py
-```
-
-### Command Line Interface
-
-```bash
-# Summarize text
-python -m src.cli.main --text "Your text here" --output summary.txt
-
-# Evaluate on dataset
-python -m src.cli.main --evaluate --data dataset.json --output results.json
-
-# Use specific models
-python -m src.cli.main --text "Your text" --extractive textrank --abstractive t5
-```
-
-## 📁 Project Structure
+## 📂 Project Structure
 
 ```
-hybrid-text-summarization/
-├── src/                          # Main source code
-│   ├── extractive/              # Extractive summarization methods
-│   │   ├── textrank.py          # TextRank implementation
-│   │   ├── bert_extractive.py   # BERT-based extractive
-│   │   └── lexrank.py           # LexRank implementation
-│   ├── abstractive/             # Abstractive summarization methods
-│   │   ├── t5_summarizer.py     # T5 model
-│   │   ├── bart_summarizer.py   # BART model
-│   │   └── pegasus_summarizer.py # Pegasus model
-│   ├── hybrid/                  # Hybrid combination methods
-│   │   └── hybrid_summarizer.py # Main hybrid implementation
-│   ├── evaluation/              # Evaluation metrics
-│   │   ├── rouge_evaluator.py   # ROUGE metrics
-│   │   ├── bleu_evaluator.py    # BLEU metrics
-│   │   └── bert_score_evaluator.py # BERTScore metrics
-│   ├── utils/                   # Utility functions
-│   │   ├── text_processing.py   # Text preprocessing
-│   │   ├── data_loader.py       # Data loading utilities
-│   │   └── config_loader.py     # Configuration management
-│   └── cli/                     # Command-line interface
-├── examples/                    # Usage examples
-│   ├── basic_usage.py          # Basic usage example
-│   └── advanced_usage.py       # Advanced usage example
-├── tests/                       # Unit tests
-├── data/                        # Data directory
-│   ├── raw/                    # Raw data
-│   └── processed/              # Processed data
-├── outputs/                     # Output directory
-├── docs/                        # Documentation
-├── config.yaml                  # Configuration file
-├── requirements.txt             # Python dependencies
-├── setup.py                     # Package setup
-├── streamlit_app.py            # Web interface
-└── README.md                   # This file
+PHARMACY 1/
+├── Administrator UC/          # Administrator user controls
+│   ├── UCDASHBOARD.cs        # Administrator dashboard
+│   ├── UCADDUSER.cs          # Add new users
+│   ├── UC_ViewUser.cs        # View all users
+│   └── UC_Profile.cs         # User profile management
+├── PharmacistUC/             # Pharmacist user controls
+│   ├── UC_P_Dashboard.cs     # Pharmacist dashboard
+│   ├── UC_P_AddMedicine.cs   # Add new medicines
+│   ├── UC_P_ViewMedicine.cs  # View medicine inventory
+│   ├── UC_P_UpdateMedicine.cs # Update medicine details
+│   ├── UC_P_MediValidCheck.cs # Check medicine validity
+│   ├── UC_P_SellMedicine.cs  # Sell medicines
+│   └── DVGPrinter.cs         # Print functionality
+├── Administrator.cs           # Administrator form
+├── Pharmacist.cs             # Pharmacist form
+├── Form1.cs                  # Login form
+├── Forgot Passward.cs        # Password recovery
+├── function.cs               # Helper functions
+├── DGVPrinter.cs            # DataGridView printing utility
+├── Program.cs               # Application entry point
+├── database.sql             # Database schema
+└── bin/Debug/
+    └── Guna.UI2.dll         # UI library
 ```
 
-## ⚙️ Configuration
+## 🔑 Default Credentials
 
-The system uses a YAML configuration file (`config.yaml`) to manage all parameters:
+**Administrator Account:**
+- Username: `root`
+- Password: `root`
 
-```yaml
-# Model configurations
-models:
-  extractive:
-    textrank:
-      damping: 0.85
-      max_iter: 100
-      tol: 1e-6
-    
-    bert_extractive:
-      model_name: "sentence-transformers/all-MiniLM-L6-v2"
-      similarity_threshold: 0.7
-      max_sentences: 5
+⚠️ **Important**: Change the default password after first login for security purposes.
 
-  abstractive:
-    t5:
-      model_name: "t5-small"
-      max_length: 512
-      min_length: 50
-      num_beams: 4
-      early_stopping: true
+## 💾 Database Schema
 
-# Hybrid configuration
-hybrid:
-  weights:
-    extractive: 0.4
-    abstractive: 0.6
-  combination_strategy: "weighted_combination"
-
-# Evaluation metrics
-evaluation:
-  metrics:
-    - "rouge-1"
-    - "rouge-2"
-    - "rouge-l"
-    - "bleu"
-    - "bert_score"
+### Users Table
+```sql
+- id (INT, Primary Key)
+- userRole (NVARCHAR) - Administrator/Pharmacist
+- name (NVARCHAR)
+- dob (DATE)
+- mobile (BIGINT)
+- email (NVARCHAR)
+- username (NVARCHAR, Unique)
+- pass (NVARCHAR)
 ```
 
-## 🔬 Research Applications
-
-This system is designed for research purposes and can be used for:
-
-- **Academic Research**: Comparative studies of summarization methods
-- **Method Development**: Testing new hybrid approaches
-- **Evaluation Studies**: Comprehensive evaluation of summarization quality
-- **Benchmarking**: Performance comparison on standard datasets
-
-## 📊 Performance
-
-The system achieves state-of-the-art performance on standard summarization benchmarks:
-
-| Method | ROUGE-1 | ROUGE-2 | ROUGE-L | BLEU | BERTScore |
-|--------|---------|---------|---------|------|-----------|
-| TextRank | 0.42 | 0.18 | 0.39 | 0.35 | 0.78 |
-| BERT Extractive | 0.45 | 0.21 | 0.42 | 0.38 | 0.81 |
-| T5 | 0.48 | 0.24 | 0.45 | 0.42 | 0.84 |
-| BART | 0.51 | 0.26 | 0.48 | 0.45 | 0.86 |
-| **Hybrid (TextRank + T5)** | **0.53** | **0.28** | **0.50** | **0.47** | **0.88** |
-
-*Results on CNN/DailyMail dataset (averaged over 100 samples)*
-
-## 🛠️ Advanced Usage
-
-### Custom Model Configuration
-
-```python
-from src.hybrid import HybridSummarizer
-from src.utils.config_loader import ConfigLoader
-
-# Create custom configuration
-config_loader = ConfigLoader()
-config_loader.set('hybrid.weights.extractive', 0.3)
-config_loader.set('hybrid.weights.abstractive', 0.7)
-config_loader.set('hybrid.combination_strategy', 'pipeline')
-
-# Initialize with custom config
-summarizer = HybridSummarizer(config_loader=config_loader)
+### Medicine Table
+```sql
+- id (INT, Primary Key)
+- mid (NVARCHAR, Unique) - Medicine ID
+- mname (NVARCHAR) - Medicine Name
+- mnumber (NVARCHAR) - Medicine Number/Batch
+- mDate (DATE) - Manufacturing Date
+- eDate (DATE) - Expiry Date
+- quantity (BIGINT) - Stock Quantity
+- Perunit (BIGINT) - Price Per Unit
 ```
 
-### Batch Processing
+## 🎯 Key Functionalities
 
-```python
-# Process multiple texts
-texts = ["Text 1...", "Text 2...", "Text 3..."]
-results = summarizer.batch_summarize(texts, num_sentences=3)
+### Medicine Management
+- Add medicines with complete details (ID, name, batch number, dates, quantity, price)
+- Update existing medicine information
+- Monitor medicine expiry dates
+- Track inventory levels
+- View complete medicine list with search functionality
+
+### Sales Management
+- Process medicine sales
+- Generate itemized bills
+- Print receipts and invoices
+- Automatic inventory updates
+
+### User Management
+- Add new users (Administrators and Pharmacists)
+- Assign roles and permissions
+- View all registered users
+- Update user profiles
+
+## 🖥️ System Requirements
+
+**Minimum:**
+- OS: Windows 7 or later
+- RAM: 2 GB
+- Storage: 100 MB free space
+- .NET Framework 4.7.2
+
+**Recommended:**
+- OS: Windows 10/11
+- RAM: 4 GB or more
+- Storage: 500 MB free space
+- SQL Server 2016 or later
+
+## 🔧 Configuration
+
+### Database Connection
+Update the connection string in `function.cs` or relevant data access files:
+```csharp
+string connectionString = "Data Source=localhost;Initial Catalog=DBMSPHARMA;Integrated Security=True";
 ```
 
-### Evaluation
+### UI Customization
+The application uses Guna.UI2 framework for modern UI components. Customize colors, themes, and styles through the Designer files (.Designer.cs).
 
-```python
-from src.evaluation import Evaluator
+## 📝 Usage Guide
 
-# Evaluate predictions
-evaluator = Evaluator()
-results = evaluator.evaluate(predictions, references)
-print(f"ROUGE-1 F1: {results['rouge-1']['f1']:.3f}")
-```
+### For Administrators:
+1. Login with administrator credentials
+2. Access Dashboard for system overview
+3. Add new users (pharmacists or administrators)
+4. View and manage existing users
+5. Update profile information
 
-## 🧪 Testing
-
-Run the test suite:
-
-```bash
-python -m pytest tests/ -v
-```
-
-## 📈 Examples
-
-### Example 1: Basic Summarization
-
-```python
-from src.hybrid import HybridSummarizer
-
-summarizer = HybridSummarizer()
-summarizer.load_models()
-
-text = "Long article about artificial intelligence..."
-summary = summarizer.summarize(text, num_sentences=3)
-print(summary['summary'])
-```
-
-### Example 2: Model Comparison
-
-```python
-from src.extractive import TextRankSummarizer, BERTExtractiveSummarizer
-
-# Compare extractive methods
-textrank = TextRankSummarizer()
-bert_ext = BERTExtractiveSummarizer()
-
-textrank.load_model()
-bert_ext.load_model()
-
-textrank_result = textrank.summarize(text)
-bert_result = bert_ext.summarize(text)
-
-print("TextRank:", textrank_result['summary'])
-print("BERT:", bert_result['summary'])
-```
-
-### Example 3: Evaluation
-
-```python
-from src.evaluation import Evaluator
-
-evaluator = Evaluator()
-results = evaluator.evaluate(
-    predictions=["Summary 1", "Summary 2"],
-    references=["Reference 1", "Reference 2"]
-)
-
-print(f"Overall Score: {results['overall_score']:.3f}")
-```
-
-## 🔧 Dependencies
-
-### Core Dependencies
-- `torch>=2.0.0` - PyTorch for deep learning
-- `transformers>=4.30.0` - Hugging Face transformers
-- `sentence-transformers>=2.2.2` - Sentence embeddings
-- `nltk>=3.8.1` - Natural language processing
-- `spacy>=3.6.0` - Advanced NLP
-
-### Evaluation Dependencies
-- `rouge-score>=0.1.2` - ROUGE metrics
-- `bert-score>=0.3.13` - BERTScore metrics
-- `sacrebleu>=2.3.1` - BLEU metrics
-
-### Interface Dependencies
-- `streamlit>=1.25.0` - Web interface
-- `gradio>=3.35.0` - Alternative web interface
-
-## 📚 Documentation
-
-- [API Documentation](docs/api.md)
-- [Configuration Guide](docs/configuration.md)
-- [Evaluation Metrics](docs/evaluation.md)
-- [Research Paper](docs/research_paper.md)
+### For Pharmacists:
+1. Login with pharmacist credentials
+2. View Dashboard for quick stats
+3. Manage medicine inventory:
+   - Add new medicines
+   - Update medicine details
+   - Check expiry dates
+4. Process sales and generate bills
+5. Print invoices for customers
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+Contributions are welcome! Please feel free to submit pull requests or open issues for bugs and feature requests.
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is available for educational and commercial use.
 
-## 🙏 Acknowledgments
+## 👥 Contact
 
-- [Hugging Face](https://huggingface.co/) for transformer models
-- [NLTK](https://www.nltk.org/) for natural language processing tools
-- [SpaCy](https://spacy.io/) for advanced NLP capabilities
-- [Streamlit](https://streamlit.io/) for the web interface
+For questions or support, please open an issue in the repository.
 
-## 📞 Contact
+## 🔒 Security Notes
 
-For questions, suggestions, or collaboration opportunities:
+- Change default credentials immediately after installation
+- Use strong passwords for all user accounts
+- Regularly backup the database
+- Keep SQL Server updated with latest security patches
+- Implement proper network security for production deployment
 
-- **Email**: research@example.com
-- **GitHub Issues**: [Create an issue](https://github.com/yourusername/hybrid-text-summarization/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/hybrid-text-summarization/discussions)
+## 🐛 Known Issues
 
-## 🔬 Research Citation
+- None currently reported
 
-If you use this system in your research, please cite:
+## 📅 Version History
 
-```bibtex
-@software{hybrid_text_summarization,
-  title={Hybrid Text Summarization System: Combining Extractive and Abstractive Methods},
-  author={Research Team},
-  year={2024},
-  url={https://github.com/yourusername/hybrid-text-summarization},
-  note={State-of-the-art hybrid text summarization using transformers}
-}
-```
+- **v1.0**: Initial release with core functionality
+  - User authentication
+  - Medicine management
+  - Sales processing
+  - Inventory tracking
 
 ---
 
-**🔬 Built for Research | 🚀 Powered by AI | 📊 Comprehensive Evaluation**
+**Built with ❤️ for efficient pharmacy management**
