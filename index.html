@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pharmacy Management (Windows App)</title>
+  <meta name="description" content="Pharmacy Management is a Windows Forms (.NET Framework) desktop application. This site provides download and setup instructions." />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --card: #121a33;
+      --text: #e6e9f2;
+      --muted: #a9b1c6;
+      --accent: #7c9cff;
+      --accent-2: #22c55e;
+      --border: #243053;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; background: radial-gradient(1200px 700px at 80% -20%, #24305322, transparent), var(--bg); color: var(--text); }
+    .wrap { display: grid; place-items: center; min-height: 100%; padding: 24px; }
+    .card { width: 100%; max-width: 920px; background: linear-gradient(180deg, #1a2446, #0f1732); border: 1px solid var(--border); border-radius: 16px; padding: 28px; box-shadow: 0 20px 60px #00000055, inset 0 1px 0 #ffffff10; }
+    .header { display: flex; gap: 16px; align-items: center; }
+    .logo { width: 48px; height: 48px; border-radius: 12px; background: conic-gradient(from 120deg, #7c9cff, #22c55e, #7c9cff); filter: saturate(1.1); box-shadow: 0 6px 20px #7c9cff44; }
+    h1 { margin: 0; font-size: 24px; letter-spacing: 0.2px; }
+    p { color: var(--muted); line-height: 1.65; }
+    .grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; margin-top: 22px; }
+    .panel { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+    .panel h2 { margin: 0 0 10px; font-size: 16px; letter-spacing: 0.2px; }
+    .btns { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; padding: 12px 16px; border-radius: 10px; border: 1px solid var(--border); background: #0f1630; color: var(--text); font-weight: 600; letter-spacing: 0.2px; transition: all .2s ease; }
+    .btn.primary { background: linear-gradient(180deg, #1c2750, #10183a); border-color: #2b3b74; box-shadow: 0 10px 24px #111b3d5a, inset 0 1px 0 #ffffff10; }
+    .btn.primary:hover { transform: translateY(-1px); box-shadow: 0 14px 30px #111b3d7a; }
+    .btn.success { background: linear-gradient(180deg, #1c3f2a, #0c2415); border-color: #215936; box-shadow: 0 10px 24px #0f2b1a5a, inset 0 1px 0 #ffffff10; }
+    .btn.success:hover { transform: translateY(-1px); box-shadow: 0 14px 30px #0f2b1a7a; }
+    code { background: #0b1228; padding: 2px 6px; border: 1px solid var(--border); border-radius: 6px; }
+    ul { margin: 10px 0 0 18px; line-height: 1.8; }
+    .foot { margin-top: 20px; font-size: 12px; color: #8a93ad; }
+    @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card">
+      <div class="header">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>Pharmacy Management — Windows Desktop App</h1>
+          <p>This repository contains a Windows Forms (.NET Framework 4.7.2) app. Vercel is a web hosting platform and cannot run desktop applications. Instead, this page provides a safe download and setup instructions.</p>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="panel">
+          <h2>Download</h2>
+          <p>Download the prebuilt Windows application (includes required UI library):</p>
+          <div class="btns">
+            <a class="btn primary" href="/pharmacy-winforms.zip" download>
+              <span>⬇️ Download for Windows (.zip)</span>
+            </a>
+            <a class="btn" href="/bin/Debug/PHARMACY%201.exe" download>
+              <span>Direct .exe (advanced)</span>
+            </a>
+          </div>
+          <p class="foot">If the direct .exe fails to launch, use the .zip which includes dependencies.</p>
+        </div>
+
+        <div class="panel">
+          <h2>How to run</h2>
+          <ul>
+            <li>Requires Windows with <strong>.NET Framework 4.7.2 Developer Pack</strong>.</li>
+            <li>Extract the <code>pharmacy-winforms.zip</code> anywhere.</li>
+            <li>Open the folder and run <code>PHARMACY 1.exe</code>.</li>
+            <li>Configure SQL connection in <code>PHARMACY 1.exe.config</code> if needed.</li>
+          </ul>
+          <div class="btns">
+            <a class="btn" href="/database.sql">Database schema (SQL)</a>
+            <a class="btn" href="/README.md">Repo README</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-top: 28px">
+        <h2>Why doesn’t it “run” on Vercel?</h2>
+        <p>Vercel hosts static sites and serverless web apps. Windows desktop apps need a Windows OS and cannot run in Vercel’s Linux web runtime. This repo is correctly deployable as a <em>static site</em> that offers downloads and documentation.</p>
+        <p>If you need a web version, consider porting to ASP.NET (Web) or Blazor, or building a separate web frontend.</p>
+      </div>
+
+      <p class="foot">© 2025 Pharmacy Management</p>
+    </section>
+  </main>
+</body>
+</html>

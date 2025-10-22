@@ -1,0 +1,5 @@
+# Ignore build artifacts not needed for static deployment
+obj/
+**/*.pdb
+# Keep the DLL used by the app; do not ignore bin entirely
+# bin/Debug is needed for direct download link; keep it
